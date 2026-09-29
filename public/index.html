@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tradkings Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <h1>Tradkings SMC Dashboard</h1>
+        <button id="refreshBtn">Refresh</button>
+      </header>
+
+      <section id="stats" class="stats-grid"></section>
+
+      <section class="panel">
+        <h2>Market Summary</h2>
+        <div id="marketSource" class="data-source">Loading market source...</div>
+        <div id="marketTable"></div>
+      </section>
+
+      <section class="panel">
+        <h2>SMC Signal Status</h2>
+        <div id="signalStatus">Loading signal...</div>
+      </section>
+
+      <section class="panel">
+        <h2>Live Market Chart</h2>
+        <div id="pairChart" style="height: 420px; width: 100%;"></div>
+        <div id="chartMeta" class="chart-meta"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Risk Rules Engine</h2>
+        <div class="risk-form">
+          <label>
+            Balance
+            <input id="riskBalance" type="number" value="250" min="0" step="10" />
+          </label>
+          <label>
+            Est. Pips
+            <input id="riskEstimatedPips" type="number" value="1500" min="0" step="50" />
+          </label>
+          <label>
+            Stop Loss Pips
+            <input id="riskStopLossPips" type="number" value="50" min="0" step="5" />
+          </label>
+          <label>
+            Pip Value / Lot
+            <input id="riskPipValue" type="number" value="170" min="0" step="10" />
+          </label>
+          <label>
+            Mode
+            <select id="riskMode">
+              <option value="auto">Auto</option>
+              <option value="fixed">Fixed 3%</option>
+              <option value="curve">Curve</option>
+              <option value="aggressive">Aggressive</option>
+            </select>
+          </label>
+          <button id="riskEvaluateBtn">Evaluate Risk</button>
+        </div>
+        <div id="riskResult" class="risk-result"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Backtest Controls</h2>
+        <div class="controls">
+          <select id="symbolSelect">
+            <option value="XAUUSD">XAUUSD</option>
+            <option value="US30">US30</option>
+            <option value="NAS100">NAS100</option>
+            <option value="GER30">GER30</option>
+            <option value="GER40">GER40</option>
+          </select>
+
+          <select id="timeframeSelect">
+            <option value="1h">1H</option>
+            <option value="4h">4H</option>
+            <option value="1d">Daily</option>
+          </select>
+
+          <button id="backtestBtn">Run Backtest</button>
+        </div>
+
+        <div id="backtestResult"></div>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
